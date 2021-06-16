@@ -1,0 +1,17 @@
+{
+  "name": "san/framework",
+  "description": "Practising how to make a web application framework using php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nepali-San",
+      "email": "sanneupane1024@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "app\\": "./"
+    }
+  },
+  "require": {}
+}

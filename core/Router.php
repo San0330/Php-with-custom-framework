@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace app\core;
 
 class Router
@@ -13,7 +15,11 @@ class Router
 
     public function resolve()
     {
-        print_r($routes);
-        print_r($_SERVER);
+        echo '<pre>routes<br />';
+        var_dump($this->routes);
+        echo '</pre>';
+        echo '<pre>_SERVER<br />';
+        var_dump($_SERVER);
+        echo '</pre>';
     }
 }

@@ -5,15 +5,18 @@ declare(strict_types=1);
 namespace app\core;
 
 use Symfony\Component\HttpFoundation\Request;
+use Twig\Environment;
 
 class Router
 {
     protected array $routes = [];
     protected Request $request;
+    protected Environment $twig;
 
-    public function __construct(Request $request)
+    public function __construct(Request $request, Environment $twig)
     {
         $this->request = $request;
+        $this->twig = $twig;
     }
 
     public function get($path, $callback)
@@ -33,18 +36,9 @@ class Router
         }
 
         if (is_string($callback)) {
-            return $this->renderview($callback);
+            return $this->twig->render("$callback.php");
         }
 
         return call_user_func($callback);
-    }
-
-    public function renderView($view)
-    {
-        if (file_exists(__DIR__ . "/../views/$view.php")) {
-            include_once __DIR__ . "/../views/$view.php";
-        } else {
-            return "View not found !!!";
-        }
     }
 }

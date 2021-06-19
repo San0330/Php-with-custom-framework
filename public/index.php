@@ -6,12 +6,14 @@ namespace app\core;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use app\controllers\SiteController;
+
 $app = new Application();
 
 $app->router->get('/', 'home');
-$app->router->get('/contact', 'contact');
-$app->router->post('/contact', function () {
-    echo "Handling submitted data";
-});
+
+$siteController = new SiteController();
+$app->router->get('/contact', [$siteController, 'contact']);
+$app->router->post('/contact', [$siteController, 'handleContact']);
 
 $app->run();

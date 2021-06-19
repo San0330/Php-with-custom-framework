@@ -6,20 +6,19 @@ namespace app\core;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Twig\Environment;
 
 class Router
 {
     protected array $routes = [];
     protected Request $request;
     protected Response $response;
-    protected Environment $twig;
+    protected BaseView $baseView;
 
-    public function __construct(Request $request, Response $response, Environment $twig)
+    public function __construct(Request $request, Response $response, BaseView $baseView)
     {
         $this->response = $response;
         $this->request = $request;
-        $this->twig = $twig;
+        $this->baseView = $baseView;
     }
 
     public function get($path, $callback)
@@ -41,11 +40,15 @@ class Router
 
         if (!$callback) {
             $this->response->setStatusCode(404)->send();
-            return $this->twig->render("_404.php");
+            return $this->baseView->render("_404");
         }
 
         if (is_string($callback)) {
-            return $this->twig->render("$callback.php");
+            return $this->baseView->render($callback);
+        }
+
+        if (is_array($callback)) {
+            return call_user_func_array($callback, [$this->request, $this->response]);
         }
 
         return call_user_func($callback);

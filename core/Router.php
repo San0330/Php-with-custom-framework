@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace app\core;
 
-use app\core\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 class Router
 {
@@ -18,18 +18,18 @@ class Router
 
     public function get($path, $callback)
     {
-        $this->routes['get'][$path] = $callback;
+        $this->routes['GET'][$path] = $callback;
     }
 
     public function resolve()
     {
-        $path = $this->request->getPath();
+        $path = $this->request->getPathInfo();
         $method = $this->request->getMethod();
 
         $callback = $this->routes[$method][$path] ?? false;
 
         if (!$callback) {
-            return "Not found";
+            return "404 Not found";
         }
 
         if (is_string($callback)) {
@@ -44,7 +44,7 @@ class Router
         if (file_exists(__DIR__ . "/../views/$view.php")) {
             include_once __DIR__ . "/../views/$view.php";
         } else {
-            return "404";
+            return "View not found !!!";
         }
     }
 }

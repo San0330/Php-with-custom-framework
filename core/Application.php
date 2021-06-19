@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace app\core;
 
-use app\core\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 class Application
 {
@@ -13,7 +13,7 @@ class Application
 
     public function __construct()
     {
-        $this->request = new Request();
+        $this->request = (new Request())->createFromGlobals();
         $this->router = new Router($this->request);
     }
 

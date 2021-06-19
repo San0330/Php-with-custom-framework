@@ -5,16 +5,19 @@ declare(strict_types=1);
 namespace app\core;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
 class Router
 {
     protected array $routes = [];
     protected Request $request;
+    protected Response $response;
     protected Environment $twig;
 
-    public function __construct(Request $request, Environment $twig)
+    public function __construct(Request $request, Response $response, Environment $twig)
     {
+        $this->response = $response;
         $this->request = $request;
         $this->twig = $twig;
     }
@@ -32,7 +35,8 @@ class Router
         $callback = $this->routes[$method][$path] ?? false;
 
         if (!$callback) {
-            return "404 Not found";
+            $this->response->setStatusCode(404)->send();            
+            return "Not found";
         }
 
         if (is_string($callback)) {

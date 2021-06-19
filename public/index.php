@@ -10,5 +10,8 @@ $app = new Application();
 
 $app->router->get('/', 'home');
 $app->router->get('/contact', 'contact');
+$app->router->post('/contact', function () {
+    echo "Handling submitted data";
+});
 
 $app->run();

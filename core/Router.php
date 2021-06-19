@@ -27,6 +27,11 @@ class Router
         $this->routes['GET'][$path] = $callback;
     }
 
+    public function post($path, $callback)
+    {
+        $this->routes['POST'][$path] = $callback;
+    }
+
     public function resolve()
     {
         $path = $this->request->getPathInfo();
@@ -35,8 +40,8 @@ class Router
         $callback = $this->routes[$method][$path] ?? false;
 
         if (!$callback) {
-            $this->response->setStatusCode(404)->send();            
-            return "Not found";
+            $this->response->setStatusCode(404)->send();
+            return $this->twig->render("_404.php");
         }
 
         if (is_string($callback)) {

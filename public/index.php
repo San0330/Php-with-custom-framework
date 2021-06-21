@@ -10,9 +10,9 @@ use app\controllers\SiteController;
 
 $app = new Application();
 
-$app->router->get('/', 'home');
-
 $siteController = new SiteController();
+
+$app->router->get('/', [$siteController, 'home']);
 $app->router->get('/contact', [$siteController, 'contact']);
 $app->router->post('/contact', [$siteController, 'handleContact']);
 

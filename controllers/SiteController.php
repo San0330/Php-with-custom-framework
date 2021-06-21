@@ -8,6 +8,15 @@ use app\core\BaseController;
 
 class SiteController extends BaseController
 {
+    public function home()
+    {
+        $data = [
+            "siteName" => "Blog"
+        ];
+
+        return $this->render("home",$data);
+    }
+
     public function contact()
     {
         return $this->render("contact");

@@ -17,8 +17,8 @@ class BaseView
         $this->twig = new Environment($loader);
     }
 
-    public function render(string $templatePath)
+    public function render(string $templatePath, array $data = [])
     {
-        return $this->twig->render("$templatePath.html.twig");
+        return $this->twig->render("$templatePath.html.twig",$data);
     }
 }

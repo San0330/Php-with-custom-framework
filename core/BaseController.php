@@ -13,8 +13,8 @@ abstract class BaseController
         $this->baseView = new BaseView();
     }
 
-    public function render(string $templatePath)
+    public function render(string $templatePath,array $data = [])
     {
-        echo $this->baseView->render($templatePath);
+        echo $this->baseView->render($templatePath,$data);
     }
 }

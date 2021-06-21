@@ -19,6 +19,6 @@ class BaseView
 
     public function render(string $templatePath)
     {
-        return $this->twig->render("$templatePath.twig.php");
+        return $this->twig->render("$templatePath.html.twig");
     }
 }

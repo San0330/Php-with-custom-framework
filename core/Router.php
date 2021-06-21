@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Router
 {
-    protected array $routes = [];
-    protected Request $request;
-    protected Response $response;
-    protected BaseView $baseView;
+    private array $routes = [];
+    private Request $request;
+    private Response $response;
+    private BaseView $baseView;
 
     public function __construct(Request $request, Response $response, BaseView $baseView)
     {

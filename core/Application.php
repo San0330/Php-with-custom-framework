@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 class Application
 {
     public Router $router;
-    public Request $request;
-    public Response $response;
-    public BaseView $baseView;
+    private Request $request;
+    private Response $response;
+    private BaseView $baseView;
 
     public function __construct()
-    {        
+    {
         $this->baseView = new BaseView();
 
         $this->request = (new Request())->createFromGlobals();

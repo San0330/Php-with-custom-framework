@@ -24,11 +24,13 @@ class Router
     public function get($path, $callback)
     {
         $this->routes['GET'][$path] = $callback;
+        return $this;
     }
 
     public function post($path, $callback)
     {
         $this->routes['POST'][$path] = $callback;
+        return $this;
     }
 
     public function resolve()

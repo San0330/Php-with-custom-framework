@@ -15,5 +15,5 @@ $siteController = new SiteController();
 $app->router->get('/', [$siteController, 'home']);
 $app->router->get('/contact', [$siteController, 'contact']);
 $app->router->post('/contact', [$siteController, 'handleContact']);
-
+// $app->router->get('/a', 1);
 $app->run();

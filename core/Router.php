@@ -47,10 +47,14 @@ class Router
             return $this->baseView->render($callback);
         }
 
-        if (is_array($callback)) {
-            return call_user_func_array($callback, [$this->request, $this->response]);
+        if (is_callable($callback)) {
+            if (is_array($callback)) {
+                return call_user_func_array($callback, [$this->request, $this->response]);
+            }
+            return call_user_func($callback);
         }
 
-        return call_user_func($callback);
+        $this->response->setStatusCode(500)->send();
+        return $this->baseView->render("_404");
     }
 }

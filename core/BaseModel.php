@@ -34,16 +34,6 @@ class BaseModel
         $this->entityManager = EntityManager::create($conn, $config);
     }
 
-    public function flush($entity = null)
-    {
-        $this->entityManager->flush($entity);
-    }
-
-    public function persist($entity)
-    {
-        $this->entityManager->persist($entity);
-    }
-
     public function getRepository(string $repository)
     {
         return $this->entityManager->getRepository($repository);

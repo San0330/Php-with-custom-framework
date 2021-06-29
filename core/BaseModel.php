@@ -29,7 +29,6 @@ class BaseModel
             'password' => 'password',
             'dbname' => 'blog',
             'port' => 3306,
-            'charset' => 'UTF-8'
         );
 
         $this->entityManager = EntityManager::create($conn, $config);
@@ -48,5 +47,10 @@ class BaseModel
     public function getRepository(string $repository)
     {
         return $this->entityManager->getRepository($repository);
+    }
+
+    public function getEntityManager()
+    {
+        return $this->entityManager;
     }
 }

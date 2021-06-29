@@ -13,10 +13,12 @@ class Application
     private Request $request;
     private Response $response;
     private BaseView $baseView;
+    private BaseModel $baseModel;
 
     public function __construct()
     {
         $this->baseView = new BaseView();
+        $this->baseModel = new BaseModel();
 
         $this->request = (new Request())->createFromGlobals();
         $this->response = new Response();
@@ -27,5 +29,10 @@ class Application
     public function run()
     {
         echo $this->router->resolve();
+    }
+
+    public function getEntityManager()
+    {
+        return $this->baseModel->getEntityManager();
     }
 }

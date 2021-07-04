@@ -24,11 +24,11 @@ class BaseModel
 
         // database configuration parameters
         $conn = array(
-            'driver' => 'pdo_mysql',
-            'user' => 'root',
-            'password' => 'password',
-            'dbname' => 'blog',
-            'port' => 3306,
+            'driver' => $_ENV['DB_DRIVER'],
+            'user' => $_ENV['DB_USER'],
+            'password' => $_ENV['DB_PASSWORD'],
+            'dbname' => $_ENV['DB_NAME'],
+            'port' => $_ENV['DB_PORT'],
         );
 
         $this->entityManager = EntityManager::create($conn, $config);

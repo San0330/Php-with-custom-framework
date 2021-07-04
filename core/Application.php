@@ -6,6 +6,7 @@ namespace app\core;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Dotenv\Dotenv;
 
 class Application
 {
@@ -17,6 +18,8 @@ class Application
 
     public function __construct()
     {
+        $this->loadEnv();
+
         $this->baseView = new BaseView();
         $this->baseModel = new BaseModel();
 
@@ -34,5 +37,11 @@ class Application
     public function getEntityManager()
     {
         return $this->baseModel->getEntityManager();
+    }
+
+    private function loadEnv()
+    {
+        $dotenv = Dotenv::createImmutable(dirname(__DIR__));
+        $dotenv->load();
     }
 }

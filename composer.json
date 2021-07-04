@@ -17,6 +17,7 @@
     "symfony/http-foundation": "^5.3",
     "twig/twig": "^3.0",
     "doctrine/orm": "^2.9",
-    "symfony/cache": "^5.3"
+    "symfony/cache": "^5.3",
+    "vlucas/phpdotenv": "^5.3"
   }
 }

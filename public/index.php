@@ -29,3 +29,7 @@ $app->router
     ->post("/register", [$authController, 'handleRegister']);
 
 $app->run();
+
+# Notes:
+# 1. Due to allowing of the chaining of get & post method of router,
+#    we can call resolve method here, which is indirectly called by $app->run()

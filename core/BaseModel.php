@@ -12,7 +12,7 @@ class BaseModel
 
     private EntityManager $entityManager;
 
-    public function __construct(Type $var = null)
+    public function __construct()
     {
         // Create a simple "default" Doctrine ORM configuration for Annotations
         $isDevMode = true;

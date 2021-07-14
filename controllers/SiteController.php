@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace app\controllers;
 
 use app\core\BaseController;
+use Symfony\Component\HttpFoundation\Request;
 
 class SiteController extends BaseController
 {
@@ -22,8 +23,8 @@ class SiteController extends BaseController
         return $this->render("contact");
     }
 
-    public function handleContact()
+    public function handleContact(Request $req)
     {
-        return "Handled submitted data";
+        return var_dump($req->request);        
     }
 }

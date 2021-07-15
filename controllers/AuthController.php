@@ -17,4 +17,9 @@ class AuthController extends BaseController
     {
         return $this->render("register");
     }
+
+
+    public function handleRegister(){
+
+    }
 }

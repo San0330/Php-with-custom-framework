@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+namespace app\models;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,10 +17,10 @@ class Post
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string")
      */
-    private $title;
+    private string $title;
 }

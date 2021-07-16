@@ -2,10 +2,14 @@
 
 declare(strict_types=1);
 
+namespace app\value_objects;
+
 use Doctrine\ORM\Mapping as ORM;
 
-/* @Embeddable */
+/** 
+  * @ORM\Embeddable 
+  */
 class Email{
-    /* @Column(type="string") */    
+    /** @ORM\Column(type="string") */    
     private string $email;
 }

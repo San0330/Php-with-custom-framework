@@ -2,10 +2,14 @@
 
 declare(strict_types=1);
 
+namespace app\value_objects;
+
 use Doctrine\ORM\Mapping as ORM;
 
-/* @Embeddable */
+/** 
+ * @ORM\Embeddable 
+ */
 class LastName{
-    /* @Column(type="string") */    
-    private string $name;
+    /** @ORM\Column(type="string") */    
+    private string $lastname;
 }

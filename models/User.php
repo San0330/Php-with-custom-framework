@@ -13,26 +13,26 @@ class User
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
      */
-    private $id;
+    private int $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @Embedded(class="FirstName",column_prefix=false)
      */
-    private $firstname;
+    private FirstName $firstname;
 
     /*
-     * @ORM\Column(type="string")
+     * @Embedded(class="LastName",column_prefix=false)
      */
-    private $lastname;
+    private LastName $lastname;
 
     /*
-     * @ORM\Column(type="string")
+     * @Embedded(class="Email",column_prefix=false)
      */
-    private $email;
+    private Email $email;
 
     /*
      * @ORM\Column(type="string")
      */ 
-    private $password;
+    private string $password;
 
 }

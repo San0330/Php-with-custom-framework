@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Embeddable
  */
-class FirstName{
+class Name{
 
-    /** @ORM\Column(type="string") */    
-    private string $firstname;
+    /** @ORM\Column(type="string",length=50) */    
+    private string $name;
 }

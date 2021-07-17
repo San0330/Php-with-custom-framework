@@ -6,8 +6,7 @@ namespace app\models;
 
 use Doctrine\ORM\Mapping as ORM;
 use app\value_objects\Email;
-use app\value_objects\FirstName;
-use app\value_objects\LastName;
+use app\value_objects\Name;
 
 /**
  * @ORM\Entity
@@ -15,13 +14,7 @@ use app\value_objects\LastName;
  */
 class User
 {
-    public function __construct(){
-        $this->firstname = new FirstName();
-        $this->lastname = new LastName(); 
-        $this->email = new Email();
-    }
-
-    /**
+     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue
@@ -29,14 +22,14 @@ class User
     private int $id;
 
     /**
-     * @ORM\Embedded(class="app\value_objects\FirstName",columnPrefix=false)
+     * @ORM\Embedded(class="app\value_objects\Name",columnPrefix="first")
      */
-    private FirstName $firstname;
+    private Name $firstname;
 
     /**
-     * @ORM\Embedded(class="app\value_objects\LastName",columnPrefix=false)
+     * @ORM\Embedded(class="app\value_objects\Name",columnPrefix="last")
      */
-    private LastName $lastname;
+    private Name $lastname;
 
     /**
      * @ORM\Embedded(class="app\value_objects\Email",columnPrefix=false)
@@ -44,7 +37,7 @@ class User
     private Email $email;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",length=150)
      */ 
     private string $password;
 

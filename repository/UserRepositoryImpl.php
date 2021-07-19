@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
-class UserRepositoryImple implements UserRepositoryInterface{
-    public function register(){}
+namespace app\repository;
+
+use Doctrine\ORM\EntityRepository;
+
+class UserRepositoryImpl extends EntityRepository implements UserRepositoryInterface{
+    public function register(string name,string email,string password){
+        return null; 
+    }
 }

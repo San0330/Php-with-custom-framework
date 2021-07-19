@@ -9,7 +9,7 @@ use app\value_objects\Email;
 use app\value_objects\Name;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="UserRepository")
  * @ORM\Table(name="users")
  */
 class User
